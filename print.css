@@ -1,0 +1,78 @@
+@media print {
+  body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 0;
+    print-color-adjust: exact;
+  }
+
+  .column {
+    flex-basis: auto;
+  }
+
+  figure.image[data-tooltip] {
+    break-inside: avoid-page;
+  }
+
+  .column.is-one-fifth.nhpbarsearch,
+  nav.au-search,
+  .navbar {
+    display: none;
+  }
+
+  .section {
+    padding: 0px;
+  }
+
+  .has-navbar-fixed-top {
+    padding: 0px !important;
+  }
+
+  @page {
+    margin: 0cm;
+  }
+
+  .card {
+    break-after: avoid;
+    break-inside: avoid-page;
+    background-color: transparent;
+    border: 0px;
+    padding: 0px;
+    box-shadow: none !important;
+  }
+
+  .card-shadow {
+    border: 1px solid black;
+    box-shadow: none;
+  }
+
+  table.info2 {
+    margin-bottom: 0px !important;
+  }
+
+  .specHeading.has-text-white,
+  .table.is-striped.is-fullwidth {
+    print-color-adjust: exact;
+  }
+
+  .specLabel {
+    width: 84% !important;
+  }
+
+  .productView .card-content {
+    padding: 0px;
+  }
+
+  .productView .title.is-4 {
+    font-size: 1rem;
+  }
+
+  .copyCSV {
+    display: none;
+  }
+
+  .largeDiagram {
+    width: 610px;
+  }
+}

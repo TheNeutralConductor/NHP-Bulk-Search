@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "NHP-BULK-SEARCH-AU",
+  "version": "1.9",
+  "description": "NHP Electrical Engineering - Australia Bulk Searching.",
+  "permissions": ["activeTab", "storage", "http://*/*", "https://*/*"],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "icons": {
+    "1": "Icon_NHP_N.svg"
+  }
+}
