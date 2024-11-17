@@ -10,6 +10,7 @@ let productview = false;
 let diagramview = false;
 let showAccessory = false;
 let showClipboard = false;
+let VERIFICATIONTOKEN = "";
 
 let XXX;
 
@@ -402,8 +403,27 @@ searchBtn.addEventListener("click", () => {
               <div class="specifications ${showSpecTable}" data-product-specification="${productListURL[index]}"></div>
               </div>
             </div>`;
+
+        // get the NHP verification token
         browser.runtime
-          .sendMessage({ text: productListURL[index], message: "NHP-AU" })
+          .sendMessage({
+            text: "",
+            message: "NHP-TOKEN",
+            verification: "",
+          })
+          .then((getToken) => {
+            VERIFICATIONTOKEN = getToken.nhpToken.__RequestVerificationToken;
+            console.log(
+              "TOKEN-->",
+              getToken.nhpToken.__RequestVerificationToken
+            );
+          });
+        browser.runtime
+          .sendMessage({
+            text: productListURL[index],
+            message: "NHP-AU",
+            verification: "",
+          })
           .then((response) => {
             if (response.message === "NHP-AU") {
               const parser = new DOMParser();
@@ -525,6 +545,7 @@ searchBtn.addEventListener("click", () => {
               .sendMessage({
                 text: `${itemBrandRange}`,
                 message: "NHP-AU-ASSETS",
+                verification: "",
               })
               .then((responseAssets) => {
                 const assetsArray = responseAssets.jason.assets;
@@ -766,6 +787,7 @@ searchBtn.addEventListener("click", () => {
                 .sendMessage({
                   text: `https://www.nhp.com.au${picture[0].url}`,
                   message: "NHP-PHOTO",
+                  verification: "",
                 })
                 .then((response2) => {
                   // const { url } = response2;
@@ -816,6 +838,7 @@ searchBtn.addEventListener("click", () => {
                 .sendMessage({
                   text: `https://www.nhp.com.au${diagramSize[0].url}`,
                   message: "NHP-PHOTO",
+                  verification: "",
                 })
                 .then((response2b) => {
                   const { url } = response2b;
@@ -870,6 +893,7 @@ searchBtn.addEventListener("click", () => {
                 .sendMessage({
                   text: `https://www.nhp.com.au${datasheetSize[0].url}`,
                   message: "NHP-PHOTO",
+                  verification: "",
                 })
                 .then((response2c) => {
                   const { url } = response2c;
@@ -896,6 +920,7 @@ searchBtn.addEventListener("click", () => {
                 .sendMessage({
                   text: `https://www.nhp.com.au${logoSize[0].url}`,
                   message: "NHP-PHOTO",
+                  verification: "",
                 })
                 .then((response2d) => {
                   const { url } = response2d;
@@ -926,6 +951,7 @@ searchBtn.addEventListener("click", () => {
                   .sendMessage({
                     text: `https://www.nhp.com.au${pdfSize[0].url}`,
                     message: "NHP-PHOTO",
+                    verification: "",
                   })
                   .then((response3) => {
                     const { url } = response3;
@@ -958,6 +984,7 @@ searchBtn.addEventListener("click", () => {
               .sendMessage({
                 text: `${productListURL[index]}`,
                 message: "NHP-ACCESSORIES",
+                verification: "",
               })
               .then((accessoryObject) => {
                 // console.log("NHP-ACCESSORIES xxxxxxxxxxxxxxxxxxxxxxxxxxxx");
@@ -991,6 +1018,7 @@ searchBtn.addEventListener("click", () => {
               .sendMessage({
                 text: `${productListURL[index]}`,
                 message: "NHP-STOCK-STATUS",
+                verification: VERIFICATIONTOKEN,
               })
               .then((responseStatus) => {
                 console.log(

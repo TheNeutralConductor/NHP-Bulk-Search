@@ -1,7 +1,34 @@
 browser.runtime.onMessage.addListener((request) => {
   const { text } = request;
   const { message } = request;
+  const { verification } = request;
   let cacheBuster = new Date().getTime();
+
+  if (message === "NHP-TOKEN") {
+    return fetch("https://www.nhp.com.au/api/antiforgerytoken/get", {
+      credentials: "include",
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:132.0) Gecko/20100101 Firefox/132.0",
+        Accept: "application/json, text/plain, */*",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Request-Id": "|278a893abdfd4c79b646849d1b47783b.51fd75509c9b44a1",
+        traceparent: "00-278a893abdfd4c79b646849d1b47783b-51fd75509c9b44a1-01",
+        "Sec-Fetch-Dest": "empty",
+        "Sec-Fetch-Mode": "cors",
+        "Sec-Fetch-Site": "same-origin",
+        Pragma: "no-cache",
+        "Cache-Control": "no-cache",
+      },
+      referrer: "https://www.nhp.com.au",
+      method: "GET",
+      mode: "cors",
+    })
+      .then((response) => response.json())
+      .then((token) => {
+        return { nhpToken: token, message: message };
+      });
+  }
 
   if (message === "NHP-AU") {
     return fetch(
@@ -131,7 +158,7 @@ browser.runtime.onMessage.addListener((request) => {
           Priority: "u=4",
         },
         referrer: "https://www.nhp.com.au/",
-        body: `ItemIds%5B0%5D=${text}&__RequestVerificationToken=emEA__gYvK-RnQJM0q1AhlmhJhNHti4r6g5MfPx0CX7oGrhfM4yMVS0hlTZvUs3YrY2Q97Yv2088sEhHWAmGISa2jns1`,
+        body: `ItemIds%5B0%5D=${text}&__RequestVerificationToken=${verification}`,
         method: "POST",
         mode: "cors",
       }
