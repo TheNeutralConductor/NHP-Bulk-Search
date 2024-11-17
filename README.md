@@ -39,3 +39,25 @@ For the geeks looking at the code, its powered by Manifest 2.
 
 Anytime you click the new tab "+" in firefox, this extension will appear.
 
+## Screen shots
+
+### Standard View
+![my image](NHP-Bulk-Search-November-Item1.png)
+
+### Documents Only
+![my image](NHP-Bulk-Search-November-documents-only.png)
+
+### Specifications
+![my image](NHP-Bulk-Search-November-specifications.png)
+
+### Show larger photos (and Diagrams)
+![my image](NHP-Bulk-Search-November-large-photos.png)
+
+### Photos only
+![my image](NHP-Bulk-Search-November-photos-only.png)
+
+### Show Accessories
+![my image](NHP-Bulk-Search-November-show-Accessory.png)
+
+### Simple View
+![my image](NHP-Bulk-Search-November-simple-view.png)
