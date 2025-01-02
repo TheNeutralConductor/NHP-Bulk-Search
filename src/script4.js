@@ -72,18 +72,28 @@ document.querySelectorAll('input[name="viewType"]').forEach((elem) => {
       document.querySelector(".productView").classList.add("is-hidden");
       document.querySelector(".diagramView").classList.add("is-hidden");
       document.querySelector(".tableView").classList.add("is-hidden");
+      document.querySelector(".reportView").classList.add("is-hidden");
     } else if (selection === "DIAGRAM") {
       document.querySelector(".diagramView").classList.remove("is-hidden");
       document.querySelector(".normalView").classList.add("is-hidden");
       document.querySelector(".productView").classList.add("is-hidden");
       document.querySelector(".tableView").classList.add("is-hidden");
+      document.querySelector(".reportView").classList.add("is-hidden");
     } else if (selection === "TABLE") {
       document.querySelector(".normalView").classList.add("is-hidden");
       document.querySelector(".productView").classList.add("is-hidden");
       document.querySelector(".diagramView").classList.add("is-hidden");
       document.querySelector(".tableView").classList.remove("is-hidden");
+      document.querySelector(".reportView").classList.add("is-hidden");
     } else if (selection === "SIMPLE") {
       document.querySelector(".productView").classList.remove("is-hidden");
+      document.querySelector(".diagramView").classList.add("is-hidden");
+      document.querySelector(".normalView").classList.add("is-hidden");
+      document.querySelector(".tableView").classList.add("is-hidden");
+      document.querySelector(".reportView").classList.add("is-hidden");
+    } else if (selection === "REPORT") {
+      document.querySelector(".reportView").classList.remove("is-hidden");
+      document.querySelector(".productView").classList.add("is-hidden");
       document.querySelector(".diagramView").classList.add("is-hidden");
       document.querySelector(".normalView").classList.add("is-hidden");
       document.querySelector(".tableView").classList.add("is-hidden");
@@ -271,6 +281,84 @@ searchBtn.addEventListener("click", () => {
             .parentElement.remove();
         }
 
+        // REPORT VIEW
+        document.querySelector("#results .reportView").innerHTML += `
+        <div class="card" data-report-id="${productListURL[index]}">
+          <div class="card-content">
+            <div class="content">
+                <div class="media">
+                  <div class="media-content">
+                    <p class="title is-3" >${productListURL[index]}</p>
+                    <p class="subtitle is-7 mb-0 has-text-link">
+                        <span class="fa-lg">
+                          <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_OSmW{transform-origin:center;animation:spinner_T6mA .75s step-end infinite}@keyframes spinner_T6mA{8.3%{transform:rotate(30deg)}16.6%{transform:rotate(60deg)}25%{transform:rotate(90deg)}33.3%{transform:rotate(120deg)}41.6%{transform:rotate(150deg)}50%{transform:rotate(180deg)}58.3%{transform:rotate(210deg)}66.6%{transform:rotate(240deg)}75%{transform:rotate(270deg)}83.3%{transform:rotate(300deg)}91.6%{transform:rotate(330deg)}100%{transform:rotate(360deg)}}</style><g class="spinner_OSmW"><rect x="11" y="1" width="2" height="5" opacity=".14"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(30 12 12)" opacity=".29"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(60 12 12)" opacity=".43"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(90 12 12)" opacity=".57"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(120 12 12)" opacity=".71"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(150 12 12)" opacity=".86"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(180 12 12)"></rect></g></svg>
+                      </span>
+                    </p>
+                  </div>
+                  <div class="media-left logo">
+                    <span class="fa-lg">
+                      <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_OSmW{transform-origin:center;animation:spinner_T6mA .75s step-end infinite}@keyframes spinner_T6mA{8.3%{transform:rotate(30deg)}16.6%{transform:rotate(60deg)}25%{transform:rotate(90deg)}33.3%{transform:rotate(120deg)}41.6%{transform:rotate(150deg)}50%{transform:rotate(180deg)}58.3%{transform:rotate(210deg)}66.6%{transform:rotate(240deg)}75%{transform:rotate(270deg)}83.3%{transform:rotate(300deg)}91.6%{transform:rotate(330deg)}100%{transform:rotate(360deg)}}</style><g class="spinner_OSmW"><rect x="11" y="1" width="2" height="5" opacity=".14"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(30 12 12)" opacity=".29"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(60 12 12)" opacity=".43"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(90 12 12)" opacity=".57"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(120 12 12)" opacity=".71"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(150 12 12)" opacity=".86"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(180 12 12)"></rect></g></svg>
+                     </span>
+                  </div>
+                </div>
+                <div class="columns" id="report-1">
+                  <div class="column is-one-third is-relative">
+                      <div class="card-image" data-report-photo="${productListURL[index]}">
+                        <span class="fa-lg">
+                          <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_OSmW{transform-origin:center;animation:spinner_T6mA .75s step-end infinite}@keyframes spinner_T6mA{8.3%{transform:rotate(30deg)}16.6%{transform:rotate(60deg)}25%{transform:rotate(90deg)}33.3%{transform:rotate(120deg)}41.6%{transform:rotate(150deg)}50%{transform:rotate(180deg)}58.3%{transform:rotate(210deg)}66.6%{transform:rotate(240deg)}75%{transform:rotate(270deg)}83.3%{transform:rotate(300deg)}91.6%{transform:rotate(330deg)}100%{transform:rotate(360deg)}}</style><g class="spinner_OSmW"><rect x="11" y="1" width="2" height="5" opacity=".14"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(30 12 12)" opacity=".29"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(60 12 12)" opacity=".43"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(90 12 12)" opacity=".57"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(120 12 12)" opacity=".71"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(150 12 12)" opacity=".86"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(180 12 12)"></rect></g></svg>
+                        </span>
+                      </div>
+                  </div>
+                  <div class="column">
+                    <div class="report-information" data-report-information="${productListURL[index]}">
+                        <span class="fa-lg">
+                          <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_OSmW{transform-origin:center;animation:spinner_T6mA .75s step-end infinite}@keyframes spinner_T6mA{8.3%{transform:rotate(30deg)}16.6%{transform:rotate(60deg)}25%{transform:rotate(90deg)}33.3%{transform:rotate(120deg)}41.6%{transform:rotate(150deg)}50%{transform:rotate(180deg)}58.3%{transform:rotate(210deg)}66.6%{transform:rotate(240deg)}75%{transform:rotate(270deg)}83.3%{transform:rotate(300deg)}91.6%{transform:rotate(330deg)}100%{transform:rotate(360deg)}}</style><g class="spinner_OSmW"><rect x="11" y="1" width="2" height="5" opacity=".14"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(30 12 12)" opacity=".29"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(60 12 12)" opacity=".43"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(90 12 12)" opacity=".57"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(120 12 12)" opacity=".71"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(150 12 12)" opacity=".86"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(180 12 12)"></rect></g></svg>
+                        </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="columns" id="report-2">
+                    <div class="column is-half" id="report-2a">
+                      <div class="card-image" data-report-dimensional="${productListURL[index]}">
+                        <span class="fa-lg">
+                          <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_OSmW{transform-origin:center;animation:spinner_T6mA .75s step-end infinite}@keyframes spinner_T6mA{8.3%{transform:rotate(30deg)}16.6%{transform:rotate(60deg)}25%{transform:rotate(90deg)}33.3%{transform:rotate(120deg)}41.6%{transform:rotate(150deg)}50%{transform:rotate(180deg)}58.3%{transform:rotate(210deg)}66.6%{transform:rotate(240deg)}75%{transform:rotate(270deg)}83.3%{transform:rotate(300deg)}91.6%{transform:rotate(330deg)}100%{transform:rotate(360deg)}}</style><g class="spinner_OSmW"><rect x="11" y="1" width="2" height="5" opacity=".14"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(30 12 12)" opacity=".29"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(60 12 12)" opacity=".43"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(90 12 12)" opacity=".57"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(120 12 12)" opacity=".71"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(150 12 12)" opacity=".86"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(180 12 12)"></rect></g></svg>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="column is-half" id="report-2b">
+                      <div class="card-image" data-report-specification-dimensions="${productListURL[index]}">
+                      </div>
+                      <div class="card-image" data-report-specification-mechanical="${productListURL[index]}">
+                      </div>  
+                      <div class="card-image" data-report-specification-construction="${productListURL[index]}">
+                      </div>  
+                    </div>
+
+                </div>
+                <div class="columns" id="report-3">
+                  <div class="column is-half" id="report-3a">
+                      <div class="card-image" data-report-other="${productListURL[index]}">
+                        <span class="fa-lg">
+                          <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_OSmW{transform-origin:center;animation:spinner_T6mA .75s step-end infinite}@keyframes spinner_T6mA{8.3%{transform:rotate(30deg)}16.6%{transform:rotate(60deg)}25%{transform:rotate(90deg)}33.3%{transform:rotate(120deg)}41.6%{transform:rotate(150deg)}50%{transform:rotate(180deg)}58.3%{transform:rotate(210deg)}66.6%{transform:rotate(240deg)}75%{transform:rotate(270deg)}83.3%{transform:rotate(300deg)}91.6%{transform:rotate(330deg)}100%{transform:rotate(360deg)}}</style><g class="spinner_OSmW"><rect x="11" y="1" width="2" height="5" opacity=".14"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(30 12 12)" opacity=".29"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(60 12 12)" opacity=".43"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(90 12 12)" opacity=".57"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(120 12 12)" opacity=".71"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(150 12 12)" opacity=".86"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(180 12 12)"></rect></g></svg>
+                        </span>
+                      </div>
+                  </div>
+                  <div class="column is-half" id="report-3b">
+                    <div class="card-image" data-report-specification-electrical="${productListURL[index]}">
+                    </div> 
+                    <div class="card-image" data-report-specification-environment="${productListURL[index]}">
+                    </div> 
+                    <div class="card-image" data-report-specifications="${productListURL[index]}">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>`;
+
+        // DIAGRAM VIEW
         document.querySelector("#results .diagramView").innerHTML += `
         <div class="card" data-id="${productListURL[index]}">
           <div class="card-content">
@@ -284,9 +372,6 @@ searchBtn.addEventListener("click", () => {
 
             </div>
             <div class="diagramsvg" data-diagramsvg="${productListURL[index]}">
-              <a href="" target="_blank" title="">
-                <img src="">
-              </a>
             </div>
           </div>        
         </div>`;
@@ -308,11 +393,11 @@ searchBtn.addEventListener("click", () => {
                       </div>
                     </div>
                     <div class="card-image" data-product-photo="${productListURL[index]}">
-                    <figure class="image m-2 is128x128" data-tooltip="">
-                      <img
-                        src="Rhombus.gif"
-                      />
-                    </figure>
+                      <figure class="image m-2 is128x128" data-tooltip="">
+                        <img
+                          src="Rhombus.gif"
+                        />
+                      </figure>
                   </div>
                 </div>
               </div>
@@ -337,6 +422,7 @@ searchBtn.addEventListener("click", () => {
             .remove();
         }
 
+        // TABLE VIEW
         document.querySelector("#results .tableView").innerHTML += `
         <div class="card" data-id="${productListURL[index]}">
          <div class="card-content">
@@ -359,6 +445,7 @@ searchBtn.addEventListener("click", () => {
          </div>
         </div>`;
 
+        // NORMAL VIEW
         document.querySelector(
           "#results .normalView"
         ).innerHTML += `<div class="card" data-id="${productListURL[index]}">
@@ -385,8 +472,8 @@ searchBtn.addEventListener("click", () => {
               <div class="columns is-multiline pictures ${showPictures}">
                 <div class="column pict01">
                   <div class="columns prodItem p-2 is-flex-wrap-wrap" data-product-photo="${productListURL[index]}"></div>
-                  <div class="otherPix">
-                    <div class="columns prodItem p-2 is-flex-wrap-wrap" data-product-diagram="${productListURL[index]}"></div>
+                  <div class="otherPix is-flex-wrap-wrap">
+                    <div class="columns prodItem p-2" data-product-diagram="${productListURL[index]}"></div>
                     <div class="columns prodItem p-2 is-flex-wrap-wrap" data-product-datasheet="${productListURL[index]}"></div>
                     <div class="columns prodItem p-2 is-flex-wrap-wrap" data-product-logo="${productListURL[index]}"></div>
                   </div>
@@ -407,17 +494,18 @@ searchBtn.addEventListener("click", () => {
         // get the NHP verification token
         browser.runtime
           .sendMessage({
-            text: "",
+            text: `${productListURL[index]}`,
             message: "NHP-TOKEN",
             verification: "",
           })
           .then((getToken) => {
             VERIFICATIONTOKEN = getToken.nhpToken.__RequestVerificationToken;
-            console.log(
-              "TOKEN-->",
-              getToken.nhpToken.__RequestVerificationToken
-            );
+            // console.log(
+            //   "TOKEN-->",
+            //   getToken.nhpToken.__RequestVerificationToken
+            // );
           });
+
         browser.runtime
           .sendMessage({
             text: productListURL[index],
@@ -433,7 +521,7 @@ searchBtn.addEventListener("click", () => {
               const findScript = doc.getElementById("__NEXT_DATA__");
               const getScriptText = findScript.innerText;
               const pageJSON = JSON.parse(getScriptText);
-              // console.log("pageJSON", pageJSON);
+              // console.log(`pageJSON : ${productListURL[index]}`, pageJSON);
 
               const prodbrand =
                 pageJSON.props.pageProps.layoutData.sitecore.context
@@ -451,6 +539,16 @@ searchBtn.addEventListener("click", () => {
                   return item.componentName === "product-panel";
                 });
               });
+
+              const breadcrumbArray = propsArray.filter(function (array) {
+                return array.some(function (item) {
+                  return item.componentName === "breadcrumb";
+                });
+              });
+              const LevelsArray = breadcrumbArray[0][0].breadcrumbs;
+              const LEVEL1 = LevelsArray[2].text;
+              const LEVEL2 = LevelsArray[3].text;
+              const LEVEL3 = LevelsArray[4].text;
 
               const specificationsArray = propsArray.filter(function (array) {
                 return array.some(function (item) {
@@ -471,6 +569,35 @@ searchBtn.addEventListener("click", () => {
                 productPanelArray[0][0].fields.productRange.value;
               const productName =
                 productPanelArray[0][0].fields.productName.value;
+
+              document.querySelector(
+                `#results .reportView .report-information[data-report-information="${productListURL[index]}"]`
+              ).innerHTML = `
+                      <div class="report-info-column1">ITEM NUMBER</div>
+                      <div class="report-info-column2">${productListURL[index]}</div>
+                      <div class="report-info-column1">DESCRIPTION</div>
+                      <div class="report-info-column2">${doc.title}</div>
+                      <div class="report-info-column1">BRAND</div>
+                      <div class="report-info-column2">${productBrand}</div>
+                      <div class="report-info-column1">PRODUCT GROUP</div>
+                      <div class="report-info-column2">${productRange}</div>
+                      <div class="report-info-column1">STOCK STATUS</div>
+                      <div class="report-info-column2 report-stock-status">
+                        <span class="fa-lg">
+                          <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_OSmW{transform-origin:center;animation:spinner_T6mA .75s step-end infinite}@keyframes spinner_T6mA{8.3%{transform:rotate(30deg)}16.6%{transform:rotate(60deg)}25%{transform:rotate(90deg)}33.3%{transform:rotate(120deg)}41.6%{transform:rotate(150deg)}50%{transform:rotate(180deg)}58.3%{transform:rotate(210deg)}66.6%{transform:rotate(240deg)}75%{transform:rotate(270deg)}83.3%{transform:rotate(300deg)}91.6%{transform:rotate(330deg)}100%{transform:rotate(360deg)}}</style><g class="spinner_OSmW"><rect x="11" y="1" width="2" height="5" opacity=".14"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(30 12 12)" opacity=".29"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(60 12 12)" opacity=".43"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(90 12 12)" opacity=".57"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(120 12 12)" opacity=".71"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(150 12 12)" opacity=".86"></rect><rect x="11" y="1" width="2" height="5" transform="rotate(180 12 12)"></rect></g></svg>
+                        </span>
+                      </div>
+                      <div class="report-info-column1">WEBSITE (AUS)</div>
+                      <div class="report-info-column2"><a href="https://www.nhp.com.au/product/${productListURL[index]}">https://www.nhp.com.au/product/${productListURL[index]}</a></div>
+                      <div class="report-info-column1">LEVEL 1</div>
+                      <div class="report-info-column2">${LEVEL1}</div>
+                      <div class="report-info-column1">LEVEL 2</div>
+                      <div class="report-info-column2">${LEVEL2}</div>
+                      <div class="report-info-column1">LEVEL 3</div>
+                      <div class="report-info-column2">${LEVEL3}</div>
+                      <div class="report-info-column1">ETIM CLASS</div>
+                      <div class="report-info-column2 etimClass"><i>No ETIM Classification<i></div>
+                `;
 
               document.querySelector(
                 `#results .productView .prodView [data-id="${productListURL[index]}"] .brand`
@@ -500,6 +627,10 @@ searchBtn.addEventListener("click", () => {
               ).innerText = `${doc.title}`;
 
               document.querySelector(
+                `#results .reportView [data-report-id="${productListURL[index]}"] .subtitle`
+              ).innerText = `${LEVEL1} > ${LEVEL2} > ${LEVEL3}`;
+
+              document.querySelector(
                 `#results .tableView [data-id="${productListURL[index]}"] .brand+.subtitle`
               ).innerText = `${doc.title}`;
 
@@ -508,7 +639,56 @@ searchBtn.addEventListener("click", () => {
                   `.specifications[data-product-specification="${productListURL[index]}"]`
                 );
 
+                let reportSpecificationData = "";
+
+                let findETIMClass = specificationsX.find(
+                  (item) => item.heading === "Component Type (ETIM Class)"
+                );
+                let reportETIMClass = findETIMClass
+                  ? findETIMClass.cells[0].value
+                  : "Not Found";
+
+                document.querySelector(
+                  `.reportView [data-report-information="${productListURL[index]}"] .etimClass`
+                ).innerText = reportETIMClass;
+
+                let reportSpecDimensions = document.querySelector(
+                  `.reportView [data-report-specification-dimensions="${productListURL[index]}"]`
+                );
+
+                let reportSpecMechanical = document.querySelector(
+                  `.reportView [data-report-specification-mechanical="${productListURL[index]}"]`
+                );
+
+                let reportSpecConstruction = document.querySelector(
+                  `.reportView [data-report-specification-construction="${productListURL[index]}"]`
+                );
+
+                let reportSpecElectrical = document.querySelector(
+                  `.reportView [data-report-specification-electrical="${productListURL[index]}"]`
+                );
+
+                let reportSpecEnvironment = document.querySelector(
+                  `.reportView [data-report-specification-environment="${productListURL[index]}"]`
+                );
+
                 specificationsX.forEach((specs) => {
+                  reportSpecificationData += `<div class="block specData"><div class="specCategory">${specs.heading}</div><div class="spec-grid">`;
+                  if (specs.heading === "Dimensions") {
+                    reportSpecDimensions.innerHTML = `<p class="card-header-title mb-0 pl-0">${specs.heading}</p>`;
+                  }
+                  if (specs.heading === "Mechanical") {
+                    reportSpecMechanical.innerHTML = `<p class="card-header-title mb-0 pl-0">${specs.heading}</p>`;
+                  }
+                  if (specs.heading === "Construction") {
+                    reportSpecConstruction.innerHTML = `<p class="card-header-title mb-0 pl-0">${specs.heading}</p>`;
+                  }
+                  if (specs.heading === "Electrical") {
+                    reportSpecElectrical.innerHTML = `<p class="card-header-title mb-0 pl-0">${specs.heading}</p>`;
+                  }
+                  if (specs.heading === "Environment") {
+                    reportSpecEnvironment.innerHTML = `<p class="card-header-title mb-0 pl-0">${specs.heading}</p>`;
+                  }
                   let documentFragment = document.createDocumentFragment();
                   let specHeadingElement = document.createElement("div");
                   specHeadingElement.classList.add("specHeader");
@@ -519,9 +699,30 @@ searchBtn.addEventListener("click", () => {
                     specPropertyElement.classList.add("specProperty");
                     specPropertyElement.innerHTML = `<div class="specLabel has-text-danger is-size-7">${cell.label}</div><div class="specValue has-text-dark is-size-7">${cell.value}</div>`;
                     specHeadingElement.append(specPropertyElement);
+                    reportSpecificationData += `<div class="report-spec-grid"><div class="report-spec-label">${cell.label}</div><div class="report-spec-value">${cell.value}</div></div>`;
+                    if (specs.heading === "Dimensions") {
+                      reportSpecDimensions.innerHTML += `<div class="report-spec-grid"><div class="report-spec-label">${cell.label}</div><div class="report-spec-value">${cell.value}</div></div`;
+                    }
+                    if (specs.heading === "Mechanical") {
+                      reportSpecMechanical.innerHTML += `<div class="report-spec-grid"><div class="report-spec-label">${cell.label}</div><div class="report-spec-value">${cell.value}</div></div`;
+                    }
+                    if (specs.heading === "Construction") {
+                      reportSpecConstruction.innerHTML += `<div class="report-spec-grid"><div class="report-spec-label">${cell.label}</div><div class="report-spec-value">${cell.value}</div></div`;
+                    }
+                    if (specs.heading === "Electrical") {
+                      reportSpecElectrical.innerHTML += `<div class="report-spec-grid"><div class="report-spec-label">${cell.label}</div><div class="report-spec-value">${cell.value}</div></div`;
+                    }
+                    if (specs.heading === "Environment") {
+                      reportSpecEnvironment.innerHTML += `<div class="report-spec-grid"><div class="report-spec-label">${cell.label}</div><div class="report-spec-value">${cell.value}</div></div`;
+                    }
                   });
                   specificationsSection.appendChild(specHeadingElement);
+                  reportSpecificationData += `</div></div>`;
                 });
+
+                // document.querySelector(
+                //   `.reportView [data-report-specifications="${productListURL[index]}"]`
+                // ).innerHTML = reportSpecificationData;
               }
 
               const productGeneralArray = {
@@ -598,6 +799,8 @@ searchBtn.addEventListener("click", () => {
                 aa0.datasheet = datasheetArray;
                 aa0.logo = logoArray;
                 aa0.cadbim = CADorBIMArray;
+
+                // console.log(aa0.diagram);
 
                 let DocumentList = "";
                 documentsArray.forEach((docu) => {
@@ -771,7 +974,9 @@ searchBtn.addEventListener("click", () => {
               `#results .normalView [data-id="${productListURL[index]}"] [data-product-photo="${productListURL[index]}"]`
             ).innerHTML = `${PhotoProducts}`;
 
-            aaa.photos.forEach((photo) => {
+            // console.log(productListURL[index], aaa);
+
+            aaa.photos.forEach((photo, qq) => {
               // let picSize =
               //   biggerPictures === false ? "is-128x128" : "is-200x200";
               let picture = photo.assetVariants.filter((pic) => {
@@ -810,21 +1015,65 @@ searchBtn.addEventListener("click", () => {
                     `https://www.nhp.com.au${pictureBiggest[0].url}`
                   );
 
-                  let zbz = document.querySelector(
-                    `.prodView [data-product-photo="${productListURL[index]}"] [data-tooltip="${photo.fileName}"] img`
-                  );
-                  zbz.setAttribute("src", `${response2.url}`);
+                  if (qq == 0) {
+                    let zbz = document.querySelector(
+                      `.prodView [data-product-photo="${productListURL[index]}"] [data-tooltip="${photo.fileName}"] img`
+                    );
+                    zbz.setAttribute("src", `${response2.url}`);
 
-                  let zdz = zbz.closest("a");
-                  zdz.setAttribute(
-                    "href",
-                    `https://www.nhp.com.au${pictureBiggest[0].url}`
-                  );
+                    if (photo.representativephoto == "Yes") {
+                      document.querySelector(
+                        `.reportView [data-report-photo="${productListURL[index]}"]`
+                      ).innerHTML = `<div class="report-repImage">REPRESENTATIVE PRODUCT PHOTO SHOWN</div><img src="${response2.url}" >`;
+                    } else {
+                      document.querySelector(
+                        `.reportView [data-report-photo="${productListURL[index]}"]`
+                      ).innerHTML = `<img src="${response2.url}" >`;
+                    }
+
+                    // let zdz = zbz.closest("a");
+                    // console.log("zdz", zdz, qq);
+                    // zdz.setAttribute(
+                    //   "href",
+                    //   `https://www.nhp.com.au${pictureBiggest[0].url}`
+                    // );
+                  }
                 });
             });
             return aaa;
           })
           .then((aa2) => {
+            let isNoDiagrams = aa2.diagram.length == 0 ? true : false;
+
+            if (isNoDiagrams) {
+              document
+                .querySelector(
+                  `.reportView [data-report-id="${productListURL[index]}"] #report-2a`
+                )
+                .remove();
+              // move the specification daa around since there is no diagrams
+              const elementToMove = document.querySelector(
+                `.reportView [data-report-id="${productListURL[index]}"] #report-3b`
+              );
+              const newParent = document.querySelector(
+                `.reportView [data-report-id="${productListURL[index]}"] #report-2`
+              );
+              newParent.appendChild(elementToMove);
+              document
+                .querySelector(
+                  `.reportView [data-report-id="${productListURL[index]}"] #report-3`
+                )
+                .remove();
+            }
+
+            if (aa2.diagram.length == 1) {
+              document
+                .querySelector(
+                  `.reportView [data-report-other="${productListURL[index]}"]`
+                )
+                .parentElement.remove();
+            }
+
             aa2.diagram.forEach((diagram) => {
               let picSize =
                 biggerPictures === false ? "is-128x128" : "is-200x200";
@@ -834,6 +1083,7 @@ searchBtn.addEventListener("click", () => {
               let diagramOriginal = diagram.assetVariants.filter((pic) => {
                 return pic.name === "Original";
               });
+
               browser.runtime
                 .sendMessage({
                   text: `https://www.nhp.com.au${diagramSize[0].url}`,
@@ -846,31 +1096,61 @@ searchBtn.addEventListener("click", () => {
                   prodItem.classList.add("image", "m-2", "is-128x128", picSize);
                   prodItem.setAttribute("data-tooltip", diagram.fileName);
                   prodItem.innerHTML = `<a href="https://www.nhp.com.au${diagramOriginal[0].url}" target="_blank"><img src="${response2b.url}" /><figcaption class="diag">Diagram</figcaption></a>`;
+                  // console.log(response2b);
+                  // console.log(diagram);
+                  // console.log(
+                  //   ">>>>>>>",
+                  //   productListURL[index],
+                  //   "-",
+                  //   diagramOriginal[0].url
+                  // );
+                  // let disvg = document.querySelector(
+                  //   `.diagramView [data-diagramsvg="${productListURL[index]}"] img`
+                  // );
 
-                  console.log(
-                    ">>>>>>>",
-                    productListURL[index],
-                    "-",
-                    diagramOriginal[0].url
-                  );
                   let disvg = document.querySelector(
-                    `.diagramView [data-diagramsvg="${productListURL[index]}"] img`
+                    `.diagramView [data-diagramsvg="${productListURL[index]}"]`
                   );
-                  disvg.setAttribute(
-                    "src",
-                    `https://www.nhp.com.au${diagramOriginal[0].url}`
-                  );
-                  let disvghref = document.querySelector(
-                    `.diagramView [data-diagramsvg="${productListURL[index]}"] a`
-                  );
-                  disvghref.setAttribute(
-                    "href",
-                    `https://www.nhp.com.au${diagramOriginal[0].url}`
-                  );
-                  disvghref.setAttribute(
-                    "title",
-                    `https://www.nhp.com.au${diagramOriginal[0].url}`
-                  );
+
+                  disvg.innerHTML += `<a href="https://www.nhp.com.au${diagramOriginal[0].url}" target="_blank" title="https://www.nhp.com.au${diagramOriginal[0].url}"><img src="https://www.nhp.com.au${diagramOriginal[0].url}"></a>`;
+
+                  // document.querySelector(
+                  //   `.reportView [data-report-dimensional="${productListURL[index]}"]`
+                  // ).innerHTML += `<p class="card-header-title">${diagram.damHierarchy}</p>
+                  // <img src="https://www.nhp.com.au${diagramOriginal[0].url}">`;
+
+                  if (diagram.damHierarchy === "Dimensional Diagram") {
+                    document
+                      .querySelector(
+                        `.reportView [data-report-dimensional="${productListURL[index]}"] span`
+                      )
+                      .remove();
+                    document.querySelector(
+                      `.reportView [data-report-dimensional="${productListURL[index]}"]`
+                    ).innerHTML += `<p class="card-header-title mb-0 pl-0">${diagram.damHierarchy}</p>
+                    <img src="https://www.nhp.com.au${diagramOriginal[0].url}">`;
+                  } else {
+                    document.querySelector(
+                      `.reportView [data-report-other="${productListURL[index]}"]`
+                    ).innerHTML = `<p class="card-header-title mb-0 pl-0">${diagram.damHierarchy}</p>
+                    <img src="https://www.nhp.com.au${diagramOriginal[0].url}">`;
+                  }
+
+                  // disvg.setAttribute(
+                  //   "src",
+                  //   `https://www.nhp.com.au${diagramOriginal[0].url}`
+                  // );
+                  // let disvghref = document.querySelector(
+                  //   `.diagramView [data-diagramsvg="${productListURL[index]}"] a`
+                  // );
+                  // disvghref.setAttribute(
+                  //   "href",
+                  //   `https://www.nhp.com.au${diagramOriginal[0].url}`
+                  // );
+                  // disvghref.setAttribute(
+                  //   "title",
+                  //   `https://www.nhp.com.au${diagramOriginal[0].url}`
+                  // );
                   let zzz = document.querySelector(
                     `[data-product-diagram="${productListURL[index]}"]`
                   );
@@ -910,12 +1190,20 @@ searchBtn.addEventListener("click", () => {
             return aa3;
           })
           .then((aa4) => {
+            if (aa4.logo.length == 0) {
+              document.querySelector(
+                `.reportView [data-report-id="${productListURL[index]}"] .media-left.logo`
+              ).innerHTML = `<div class="report-no-logo">MISSING LOGO</div>`;
+            }
             aa4.logo.forEach((logo) => {
               let picSize =
                 biggerPictures === false ? "is-128x128" : "is-200x200";
               let logoSize = logo.assetVariants.filter((pic) => {
                 return pic.name === "SmallPNG";
               });
+              document.querySelector(
+                `.reportView [data-report-id="${productListURL[index]}"] .media-left.logo`
+              ).innerHTML = `<img src="https://www.nhp.com.au${logo.url}">`;
               browser.runtime
                 .sendMessage({
                   text: `https://www.nhp.com.au${logoSize[0].url}`,
@@ -1014,6 +1302,10 @@ searchBtn.addEventListener("click", () => {
               });
           })
           .then((eee) => {
+            // console.log(
+            //   `${productListURL[index]} eee NHP-STOCK-STATUS token = `,
+            //   eee
+            // );
             browser.runtime
               .sendMessage({
                 text: `${productListURL[index]}`,
@@ -1021,9 +1313,9 @@ searchBtn.addEventListener("click", () => {
                 verification: VERIFICATIONTOKEN,
               })
               .then((responseStatus) => {
-                console.log(
-                  responseStatus.jason.ChildProducts[0].StockStatusLabel
-                );
+                // console.log(
+                //   responseStatus.jason.ChildProducts[0].StockStatusLabel
+                // );
 
                 let NHPstockstatusAU =
                   responseStatus.jason.ChildProducts[0].StockStatusLabel ===
@@ -1035,6 +1327,10 @@ searchBtn.addEventListener("click", () => {
                     `#results .normalView [data-id="${productListURL[index]}"] .stock-status`
                   )
                   .classList.add(`${NHPstockstatusAU}`);
+
+                document.querySelector(
+                  `.reportView .report-information[data-report-information="${productListURL[index]}"] .report-stock-status`
+                ).innerHTML = `<span>${responseStatus.jason.ChildProducts[0].StockStatusLabel}</span>`;
                 document.querySelector(
                   `#results .normalView [data-id="${productListURL[index]}"] .stock-status`
                 ).innerHTML = `<span>${responseStatus.jason.ChildProducts[0].StockStatusLabel}</span>`;
@@ -1207,6 +1503,7 @@ function clearSelectionList() {
   document.querySelector("#results .normalView").innerHTML = "";
   document.querySelector("#results .copyCSV").innerHTML = "";
   document.querySelector("#results .diagramView").innerHTML = "";
+  document.querySelector("#results .reportView").innerHTML = "";
   document.getElementById("productItems").value = "";
   document.getElementById("reset").style.visibility = "hidden";
   document.getElementById("resultCards").style.visibility = "hidden";

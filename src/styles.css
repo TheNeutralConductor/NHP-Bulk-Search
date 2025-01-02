@@ -142,6 +142,9 @@ figcaption {
 
 .conbox2 {
   color: green;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 10px;
 }
 
 .rockwell {
@@ -237,4 +240,62 @@ td a:hover {
 .in-stock {
   background-color: springgreen;
   color: black;
+}
+
+.reportView .logo img {
+  height: 60px;
+}
+
+.report-information {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+}
+
+.report-repImage {
+  position: absolute;
+  bottom: 0px;
+  font-size: 10px;
+  text-align: center;
+  width: 100%;
+  color: black;
+  background-color: gainsboro;
+  opacity: 0.3;
+}
+
+.report-info-column1 {
+  text-align: right;
+  font-weight: bold;
+  padding-right: 6px;
+  background-color: whitesmoke;
+  border-bottom: 3px solid white;
+  font-size: 14px;
+}
+
+.report-info-column2 {
+  font-size: 14px;
+  padding-left: 10px;
+}
+
+.specData {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-size: 10px;
+}
+
+.report-spec-grid {
+  display: flex;
+  font-size: 12px;
+}
+
+.report-spec-label {
+  width: 71%;
+  border-bottom: 1px dotted grey;
+}
+
+.report-no-logo {
+  padding: 10px;
+  color: red;
+  border-bottom: 1px solid;
+  border-top: 1px solid;
 }
