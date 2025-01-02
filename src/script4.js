@@ -1503,6 +1503,7 @@ function clearSelectionList() {
   document.querySelector("#results .normalView").innerHTML = "";
   document.querySelector("#results .copyCSV").innerHTML = "";
   document.querySelector("#results .diagramView").innerHTML = "";
+  document.querySelector("#results .tableView").innerHTML = "";
   document.querySelector("#results .reportView").innerHTML = "";
   document.getElementById("productItems").value = "";
   document.getElementById("reset").style.visibility = "hidden";
