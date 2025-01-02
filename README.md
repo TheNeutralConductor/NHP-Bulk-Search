@@ -1,6 +1,8 @@
 # NHP-Bulk-Search
 Bulk search product _item numbers_ of the Australian [NHP Electrical Engineering Products](https://www.nhp.com.au) website.
 
+**Version : 2.01**
+
 Quickly find a product items:
 * Specifications
 * Photos
@@ -10,7 +12,7 @@ Quickly find a product items:
 * Accessories
 * Stock status
 
-Easily PRINT a fully interactive PDF.
+Easily PRINT a fully interactive PDF for export.
 
 ![my image](NHP-Bulk-Search-November-224.png)
 
@@ -18,6 +20,7 @@ Easily PRINT a fully interactive PDF.
 Firefox browser.
 
 This is a *temporary* installed extension for Firefox only.
+You will need to install it everytime you use it as its currently functionally in a 'development' phase.
 
 Uses the _new-tab_ extension feature. It will appear whenever you create a _new-tab_.
 
@@ -38,6 +41,18 @@ For the geeks looking at the code, its powered by Manifest 2.
 11. The extension will now be loaded.
 
 Anytime you click the new tab "+" in firefox, this extension will appear.
+
+## Create an "Interactive PDF"
+This application allows the existing browser interactivity to be included into an exported PDF.
+
+To export the interactive the PDF.
+
+1. Click the "Print" button the application menu bar.
+2. Select the print _Destination_ as "Save to PDF".
+3. Press SAVE
+4. Rename the PDF as required and save to the location you have chosen.
+
+![my_image](NHP-Bulk-Search-v201-Save-Interactive-PDF.png)
 
 ## Screen shots
 
@@ -61,3 +76,6 @@ Anytime you click the new tab "+" in firefox, this extension will appear.
 
 ### Simple View
 ![my image](NHP-Bulk-Search-November-simple-view.png)
+
+### Report View 
+![my_image](NHP-Bulk-Search-v201-Report-View.png)
