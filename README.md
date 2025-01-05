@@ -1,7 +1,9 @@
 # NHP-Bulk-Search
 Bulk search product _item numbers_ of the Australian [NHP Electrical Engineering Products](https://www.nhp.com.au) website.
 
-**Version : 2.01**
+~~Version : 2.01~~
+
+**Version : 2.3**
 
 Quickly find a product items:
 * Specifications
@@ -11,6 +13,7 @@ Quickly find a product items:
 * CAD drawings
 * Accessories
 * Stock status
+* Has experimental search input to *better* search the NHP website using NHPs 'Discover' engine.
 
 Easily PRINT a fully interactive PDF for export.
 
@@ -79,3 +82,6 @@ To export the interactive the PDF.
 
 ### Report View 
 ![my_image](NHP-Bulk-Search-v201-Report-View.png)
+
+### (Experimental) Use the NHP Search Input
+![my_image](NHP-Bulk-Search-v2-3-Single-Search-INPUT.png)
