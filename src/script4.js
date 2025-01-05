@@ -1580,3 +1580,37 @@ function viewDiagram() {
     .querySelectorAll(".diagramView")
     .forEach((c) => c.classList.remove("is-hidden"));
 }
+
+let auSiteSearchInput = document.getElementById("auSiteSearch");
+auSiteSearchInput.addEventListener("change", function () {
+  browser.runtime
+    .sendMessage({
+      text: this.value,
+      message: "NHP-AU-SINGLE-SEARCH",
+      verification: "",
+    })
+    .then((response) => {
+      console.log(response);
+      document.getElementById("resultCards").style.visibility = "visible";
+      let experimental = document.querySelector(".experimental .container");
+      experimental.innerHTML = ``;
+
+      let newHTML = `<div class="grid is-col-min-8">`;
+      response.forEach((x) => {
+        let isObsolute =
+          x.custom_web_product_status === "Obsolete" ? true : false;
+        let obsoleteDIV =
+          isObsolute === true ? `<div class="obsolete">OBSOLETE</div>` : ``;
+        let obsoleteCLASS = isObsolute === true ? `has-text-danger` : ``;
+        let obsoleteCLASSheader =
+          isObsolute === true ? `has-background-danger-light` : ``;
+        let newCard = `<div class="cell"><a href="https://www.nhp.com.au${x.product_url}" target="_blank"><div class="card singleSearch is-flex is-flex-direction-column is-align-items-center">`;
+        let header = `<header class="card-header ${obsoleteCLASSheader} width100 is-flex-direction-column is-align-items-center"><p class="card-header-title">${x.sku}</p></header>`;
+        let content = `<div class="media-content is-flex is-flex-direction-column is-align-items-center"><p class="subtitle has-text-link is-7">${x.description}</p><p class="subtitle ${obsoleteCLASS} ml-3 mr-3 is-italic is-7">${x.custom_display_name}</p></div>`;
+
+        let image = `<div class="card-image">${obsoleteDIV}<figure class="image imgSearchSize"><img src="https://www.nhp.com.au${x.image_url}" /></figure></div>`;
+        newHTML += newCard + header + content + image + "</div></a></div>";
+      });
+      experimental.innerHTML = newHTML + "</div>";
+    });
+});

@@ -31,6 +31,36 @@ browser.runtime.onMessage.addListener((request) => {
       });
   }
 
+  // returns 20 items
+  let TOTALITEMS = 50;
+  if (message === "NHP-AU-SINGLE-SEARCH") {
+    return fetch("https://www.nhp.com.au/api/search/products", {
+      credentials: "include",
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0",
+        Accept: "application/json, text/javascript, */*; q=0.01",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "X-Requested-With": "XMLHttpRequest",
+        "Sec-Fetch-Dest": "empty",
+        "Sec-Fetch-Mode": "cors",
+        "Sec-Fetch-Site": "same-origin",
+        "Sec-GPC": "1",
+        Pragma: "no-cache",
+        "Cache-Control": "no-cache",
+      },
+      referrer: "https://www.nhp.com.au/",
+      body: `searchTerm=${text}&noofItems=${TOTALITEMS}&discoverParams%5BDiscoverSuggestionParameter%5D=%7B%22keyphrase%22%3A%7B%22max%22%3A${TOTALITEMS}%7D%7D&discoverParams%5BDiscoverRequestForParameter%5D=%5B%22query%22%5D&page%5Blocale_country%5D=au&page%5Blocale_language%5D=en&page%5Breferrer%5D=&page%5Btitle%5D=NHP+Australia+-+Specialists+in+electrical+and+automation+products%2C+systems+and+solutions.&browser%5Buser_agent%5D=Godzirra%2F5.0+(Windows+NT+10.0%3B+Win64%3B+x64%3B+rv%3A133.0)+Gecko%2F20100101+Firefroth%2F133.0`,
+      method: "POST",
+      mode: "cors",
+    })
+      .then((response) => response.json())
+      .then((auSearch) => {
+        return auSearch.content.product.value;
+      });
+  }
+
   if (message === "NHP-AU") {
     return fetch(
       `https://www.nhp.com.au/product/${text}?cacheBuster=${cacheBuster}`,

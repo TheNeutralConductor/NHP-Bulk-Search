@@ -299,3 +299,29 @@ td a:hover {
   border-bottom: 1px solid;
   border-top: 1px solid;
 }
+
+/* EXPERIMENTAL */
+.image.imgSearchSize img {
+  height: 200px;
+  width: 200px;
+}
+
+.obsolete {
+  position: absolute;
+  top: 50%;
+  z-index: 100;
+  background-color: red;
+  width: 100%;
+  opacity: 0.5;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.card.singleSearch:hover {
+  outline: 3px dashed fuchsia;
+}
+
+.width100 {
+  width: 100%;
+}
