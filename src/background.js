@@ -4,6 +4,9 @@ browser.runtime.onMessage.addListener((request) => {
   const { verification } = request;
   let cacheBuster = new Date().getTime();
 
+  const AUSTRALIA = "https://www.nhp.com.au";
+  const NEWZEALAND = "https://www.nhpnz.co.nz";
+
   if (message === "NHP-TOKEN") {
     return fetch("https://www.nhp.com.au/api/antiforgerytoken/get", {
       credentials: "include",
@@ -31,10 +34,10 @@ browser.runtime.onMessage.addListener((request) => {
       });
   }
 
-  // returns 20 items
+  // returns 50 items
   let TOTALITEMS = 50;
   if (message === "NHP-AU-SINGLE-SEARCH") {
-    return fetch("https://www.nhp.com.au/api/search/products", {
+    return fetch(`https://www.nhp.com.au/api/search/products`, {
       credentials: "include",
       headers: {
         "User-Agent":

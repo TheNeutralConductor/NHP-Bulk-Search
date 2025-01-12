@@ -142,51 +142,6 @@ backgroundCheckBox.addEventListener("change", function () {
   }
 });
 
-// const tableviewCheckBox = document.getElementById("tableview");
-// tableviewCheckBox.addEventListener("change", function () {
-//   if (this.checked) {
-//     tableview = true;
-//     if (document.querySelector(".assetTable.is-hidden")) {
-//       viewTable();
-//     }
-//   } else {
-//     tableview = false;
-//     if (document.querySelector(".assetTable:not(.is-hidden)")) {
-//       viewTable();
-//     }
-//   }
-// });
-
-// const productviewCheckBox = document.getElementById("prodview");
-// productviewCheckBox.addEventListener("change", function () {
-//   if (this.checked) {
-//     productview = true;
-//     if (document.querySelector(".productView.is-hidden")) {
-//       viewProduct();
-//     }
-//   } else {
-//     productview = false;
-//     if (document.querySelector(".productView:not(.is-hidden)")) {
-//       viewProduct();
-//     }
-//   }
-// });
-
-// const diagramviewCheckBox = document.getElementById("diagview");
-// diagramviewCheckBox.addEventListener("change", function () {
-//   if (this.checked) {
-//     diagramview = true;
-//     if (document.querySelector(".diagramView.is-hidden")) {
-//       viewDiagram();
-//     }
-//   } else {
-//     diagramview = false;
-//     if (document.querySelector(".diagramView:not(.is-hidden)")) {
-//       viewDiagram();
-//     }
-//   }
-// });
-
 const showAccessoryCheckBox = document.getElementById("showAcc");
 showAccessoryCheckBox.addEventListener("change", function () {
   if (this.checked) {
@@ -1581,8 +1536,14 @@ function viewDiagram() {
     .forEach((c) => c.classList.remove("is-hidden"));
 }
 
+// EXPERIMENTAL - uses the actual 'Discover' search from NHP website
 let auSiteSearchInput = document.getElementById("auSiteSearch");
 auSiteSearchInput.addEventListener("change", function () {
+  console.log("CHANGE", this.value, this.value == "");
+  if (this.value == "") {
+    document.querySelector(".experimental .container.is-fluid").innerHTML = "";
+    return;
+  }
   browser.runtime
     .sendMessage({
       text: this.value,
@@ -1595,7 +1556,7 @@ auSiteSearchInput.addEventListener("change", function () {
       let experimental = document.querySelector(".experimental .container");
       experimental.innerHTML = ``;
 
-      let newHTML = `<div class="grid is-col-min-8">`;
+      let newHTML = `<div class="title has-text-centered">NHP Search Bar Integration</div><div class="grid is-col-min-8">`;
       response.forEach((x) => {
         let isObsolute =
           x.custom_web_product_status === "Obsolete" ? true : false;

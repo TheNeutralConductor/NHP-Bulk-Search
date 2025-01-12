@@ -319,9 +319,17 @@ td a:hover {
 }
 
 .card.singleSearch:hover {
-  outline: 3px dashed fuchsia;
+  outline: 2px dashed #0f0f0f;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.33);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.33);
 }
 
 .width100 {
   width: 100%;
+}
+
+.experimental {
+  background-color: lightgoldenrodyellow;
+  border-radius: 20px;
 }
