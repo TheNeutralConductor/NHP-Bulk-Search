@@ -2,8 +2,8 @@
 Bulk search product _item numbers_ of the Australian [NHP Electrical Engineering Products](https://www.nhp.com.au) website.
 
 ~~Version : 2.01~~
-
-**Version : 2.3**
+~~Version : 2.3~~
+**Version : 2.35**
 
 Quickly find a product items:
 * Specifications
