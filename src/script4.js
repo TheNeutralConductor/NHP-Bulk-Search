@@ -14,6 +14,23 @@ let VERIFICATIONTOKEN = "";
 
 let XXX;
 
+let csvReportARRAY = [
+  {
+    asset_Type: "Asset Type",
+    asset_Classification: "Asset Classification",
+    asset_FileName: "Asset File Name",
+    asset_URL: "Asset Download URL",
+    asset_Version: "Asset Version",
+    asset_Portfolio: "Portfolio",
+    asset_Department: "Department",
+    item_Number_AU: "Item Number (AUS)",
+    item_Range: "Product Range",
+    item_Brand: "Brand",
+    item_Description: "Product Description",
+    product_URL: "Product URL (AUS)",
+  },
+];
+
 console.clear();
 console.log(
   "%c--- NHP BULK SEARCH ---",
@@ -177,6 +194,31 @@ document.getElementById("btn-print").addEventListener("click", () => {
   window.print();
 });
 
+// CSV REPORT button...
+document.getElementById("btn-csvdownload").addEventListener("click", () => {
+  console.log(csvReportARRAY);
+  const csvRows = [];
+  const csvDATA = [];
+  const url = [];
+  csvReportARRAY.forEach((item) => {
+    csvDATA.push(Object.values(item));
+  });
+  let csvFILEcontent = "";
+  csvDATA.forEach((item) => {
+    csvFILEcontent += item.join("|") + "\n";
+  });
+  const blob = new Blob([csvFILEcontent], { type: "text/csv;" });
+  const csvURL = URL.createObjectURL(blob);
+  const ahref = document.createElement("a");
+  document.body.appendChild(ahref);
+  ahref.href = csvURL;
+  ahref.download = `NHP-AUS-Assets-CSV-${Date()
+    .slice(0, 24)
+    .replaceAll(" ", "-")
+    .replaceAll(":", "-")}.csv`;
+  ahref.click();
+});
+
 // CLEAR button...
 clearBtn.addEventListener("click", (e) => {
   clearSelectionList();
@@ -214,6 +256,7 @@ searchBtn.addEventListener("click", () => {
     document.getElementById("reset").style.visibility = "visible";
     document.getElementById("resultCards").style.visibility = "visible";
     document.getElementById("btn-print").classList.toggle("is-hidden");
+    document.getElementById("btn-csvdownload").classList.remove("is-hidden");
 
     let productListURL = productList.map((item) => `${item}`);
 
@@ -856,6 +899,20 @@ searchBtn.addEventListener("click", () => {
                   <td>-</td> 
                   <td>${data.displayOrder}</td> 
                   </tr>`;
+                  pushToCSVarray(
+                    data.type,
+                    data.subtype,
+                    data.fileName,
+                    data.url,
+                    data.version,
+                    data.portfolio,
+                    data.department,
+                    productListURL[index],
+                    aa0.range,
+                    aa0.brand,
+                    aa0.description,
+                    `https://www.nhp.com.au/product/${productListURL[index]}`
+                  );
                 });
 
                 document.querySelector(
@@ -897,15 +954,28 @@ searchBtn.addEventListener("click", () => {
           })
           .then((aaa) => {
             let PhotoList = "";
-            aaa.photos.forEach(
-              (photo) =>
-                (PhotoList += `<tr class="is-size-7">
+            aaa.photos.forEach((photo) => {
+              PhotoList += `<tr class="is-size-7">
               <th>${photo.type}</th>
               <td>${photo.fileName}</td> 
               <td>${photo.representativephoto}</td> 
               <td>${photo.displayOrder}</td> 
-              </tr>`)
-            );
+              </tr>`;
+              pushToCSVarray(
+                photo.type,
+                photo.subtype,
+                photo.fileName,
+                photo.url,
+                photo.version,
+                photo.portfolio,
+                photo.department,
+                productListURL[index],
+                aaa.range,
+                aaa.brand,
+                aaa.description,
+                `https://www.nhp.com.au/product/${productListURL[index]}`
+              );
+            });
 
             let picSize =
               biggerPictures === false ? "is-128x128" : "is-200x200";
@@ -1038,6 +1108,20 @@ searchBtn.addEventListener("click", () => {
               let diagramOriginal = diagram.assetVariants.filter((pic) => {
                 return pic.name === "Original";
               });
+              pushToCSVarray(
+                diagram.type,
+                diagram.subtype,
+                diagram.fileName,
+                diagram.url,
+                diagram.version,
+                diagram.portfolio,
+                diagram.department,
+                productListURL[index],
+                aa2.range,
+                aa2.brand,
+                aa2.description,
+                `https://www.nhp.com.au/product/${productListURL[index]}`
+              );
 
               browser.runtime
                 .sendMessage({
@@ -1124,6 +1208,21 @@ searchBtn.addEventListener("click", () => {
               let datasheetOriginal = datasheet.assetVariants.filter((pic) => {
                 return pic.name === "Original";
               });
+
+              pushToCSVarray(
+                datasheet.type,
+                datasheet.subtype,
+                datasheet.fileName,
+                datasheet.url,
+                datasheet.version,
+                datasheet.portfolio,
+                datasheet.department,
+                productListURL[index],
+                aa3.range,
+                aa3.brand,
+                aa3.description,
+                `https://www.nhp.com.au/product/${productListURL[index]}`
+              );
               browser.runtime
                 .sendMessage({
                   text: `https://www.nhp.com.au${datasheetSize[0].url}`,
@@ -1151,6 +1250,20 @@ searchBtn.addEventListener("click", () => {
               ).innerHTML = `<div class="report-no-logo">MISSING LOGO</div>`;
             }
             aa4.logo.forEach((logo) => {
+              pushToCSVarray(
+                logo.type,
+                logo.subtype,
+                logo.fileName,
+                logo.url,
+                logo.version,
+                logo.portfolio,
+                logo.department,
+                productListURL[index],
+                aa4.range,
+                aa4.brand,
+                aa4.description,
+                `https://www.nhp.com.au/product/${productListURL[index]}`
+              );
               let picSize =
                 biggerPictures === false ? "is-128x128" : "is-200x200";
               let logoSize = logo.assetVariants.filter((pic) => {
@@ -1182,6 +1295,20 @@ searchBtn.addEventListener("click", () => {
           .then((bbb) => {
             if (bbb.documents.length > 0) {
               bbb.documents.forEach((pdf) => {
+                pushToCSVarray(
+                  pdf.type,
+                  pdf.subtype,
+                  pdf.fileName,
+                  pdf.url,
+                  pdf.version,
+                  pdf.portfolio,
+                  pdf.department,
+                  productListURL[index],
+                  bbb.range,
+                  bbb.brand,
+                  bbb.description,
+                  `https://www.nhp.com.au/product/${productListURL[index]}`
+                );
                 let picSize =
                   biggerPictures === false ? "is-128x128" : "is-200x200";
                 let pdfSize = pdf.assetVariants.filter((pic) => {
@@ -1464,6 +1591,23 @@ function clearSelectionList() {
   document.getElementById("reset").style.visibility = "hidden";
   document.getElementById("resultCards").style.visibility = "hidden";
   document.getElementById("btn-print").classList.toggle("is-hidden");
+  document.getElementById("btn-csvdownload").classList.add("is-hidden");
+  csvReportARRAY = [
+    {
+      asset_Type: "Asset Type",
+      asset_Classification: "Asset Classification",
+      asset_FileName: "Asset File Name",
+      asset_URL: "Asset Download URL",
+      asset_Version: "Asset Version",
+      asset_Portfolio: "Portfolio",
+      asset_Department: "Department",
+      item_Number_AU: "Item Number (AUS)",
+      item_Range: "Product Range",
+      item_Brand: "Brand",
+      item_Description: "Product Description",
+      product_URL: "Product URL (AUS)",
+    },
+  ];
 }
 
 function changeImageSizes() {
@@ -1534,6 +1678,36 @@ function viewDiagram() {
   document
     .querySelectorAll(".diagramView")
     .forEach((c) => c.classList.remove("is-hidden"));
+}
+
+function pushToCSVarray(
+  type,
+  classification,
+  filename,
+  assetURL,
+  version,
+  portfolio,
+  department,
+  itemNumber,
+  range,
+  brand,
+  itemDescription,
+  productURL
+) {
+  csvReportARRAY.push({
+    asset_Type: `${type}`,
+    asset_Classification: `${classification}`,
+    asset_FileName: `${filename}`,
+    asset_URL: `https://www.nhp.com.au${assetURL}`,
+    asset_Version: `${version ?? ""}`,
+    asset_Portfolio: `${portfolio ?? ""}`,
+    asset_Department: `${department}`,
+    item_Number_AU: `${itemNumber}`,
+    item_Range: `${range}`,
+    item_Brand: `${brand}`,
+    item_Description: `${itemDescription}`,
+    product_URL: `${productURL}`,
+  });
 }
 
 // EXPERIMENTAL - uses the actual 'Discover' search from NHP website
