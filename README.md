@@ -1,9 +1,8 @@
 # NHP-Bulk-Search
 Bulk search product _item numbers_ of the Australian [NHP Electrical Engineering Products](https://www.nhp.com.au) website.
 
-~~Version : 2.01~~
-~~Version : 2.3~~
-**Version : 2.35**
+~~Version : 2.35~~
+**Version : 2.50**
 
 Quickly find a product items:
 * Specifications
@@ -16,6 +15,7 @@ Quickly find a product items:
 * Has experimental search input to *better* search the NHP website using NHPs 'Discover' engine.
 
 Easily PRINT a fully interactive PDF for export.
+Export a detailed CSV _(Pipe delimited)_ file report covering each asset.
 
 ![my image](NHP-Bulk-Search-November-224.png)
 
@@ -56,6 +56,25 @@ To export the interactive the PDF.
 4. Rename the PDF as required and save to the location you have chosen.
 
 ![my_image](NHP-Bulk-Search-v201-Save-Interactive-PDF.png)
+
+## Export a CSV Report"
+If the item has assets the "CSV Report" button will appear.
+
+When clicked, it will export a CSV file into the "Downloads" folder of your PC.
+
+To use in MS EXCEL, open a new spreadsheet and go to the "Data" table and select "From Text/CSV".
+
+<img src="/screenshots/NHP-Bulk-Search-v250-CSV-Report-1.png" alt="Excel CSV Report Image 1" width="50%" height="50%">
+
+Select the CSV file you want to import and press the "Transform Data" button.
+
+_NOTE: The CSV file exported will have a pipe delimiter and not the common comma delimiter_
+
+<img src="/screenshots/NHP-Bulk-Search-v250-CSV-Report-2.png" alt="Excel CSV Report Image 2" width="80%" height="80%">
+
+Select "Use First Row as Headers" and then press "Close & Load"
+<img src="/screenshots/NHP-Bulk-Search-v250-CSV-Report-3.png" alt="Excel CSV Report Image 3" width="100%" height="100%">
+<img src="/screenshots/NHP-Bulk-Search-v250-CSV-Report-4.png" alt="Excel CSV Report Image 4" width="100%" height="100%">
 
 ## Screen shots
 
