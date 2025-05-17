@@ -71,13 +71,13 @@ browser.runtime.onMessage.addListener((request) => {
     )
       .then((response) => response.text())
       .then((html) => {
-        // console.log(`***** ${text} PRODUCT PAGE FOUND ***********`);
-        // console.log(html);
+        console.log(`***** ${text} PRODUCT PAGE FOUND ***********`);
+        console.log(html);
         return { html: html, message: message };
       })
       .catch((error) => {
-        console.log(`${text} NHP AU PRODUCT PAGE ERROR`);
-        console.error(error);
+        // console.log(`${text} NHP AU PRODUCT PAGE ERROR`);
+        // console.error(error);
         return { html: "AU", message: "NETWORK ERROR" };
       });
   }
@@ -103,7 +103,7 @@ browser.runtime.onMessage.addListener((request) => {
       .then((response) => response.json())
       .then((jason) => {
         // console.log(`${text} PRODUCT AU ASSET PAGE FOUND `);
-        // console.log(jason);
+        console.log(jason);
         return { jason: jason, message: message };
       })
       .catch((error) => {

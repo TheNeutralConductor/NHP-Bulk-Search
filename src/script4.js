@@ -519,7 +519,7 @@ searchBtn.addEventListener("click", () => {
               const findScript = doc.getElementById("__NEXT_DATA__");
               const getScriptText = findScript.innerText;
               const pageJSON = JSON.parse(getScriptText);
-              // console.log(`pageJSON : ${productListURL[index]}`, pageJSON);
+              console.log(`pageJSON : ${productListURL[index]}`, pageJSON);
 
               const prodbrand =
                 pageJSON.props.pageProps.layoutData.sitecore.context
@@ -550,7 +550,7 @@ searchBtn.addEventListener("click", () => {
 
               const specificationsArray = propsArray.filter(function (array) {
                 return array.some(function (item) {
-                  return item.componentName === "product-tabs";
+                  return item.componentName === "product-tabs-editable";
                 });
               });
 
@@ -788,7 +788,7 @@ searchBtn.addEventListener("click", () => {
                 });
 
                 const CADorBIMArray = assetsArray.filter((cadbim) => {
-                  return cadbim.mediaType == "CAD or BIM";
+                  return cadbim.mediaType == "CAD or Drawing";
                 });
 
                 aa0.photos = productPhotosArray;
